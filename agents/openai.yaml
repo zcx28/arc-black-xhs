@@ -1,0 +1,4 @@
+interface:
+  display_name: "arc-black-xhs"
+  short_description: "黑底白线、蓝绿强调的 HTML 图文排版，含固定品牌资产与高清导出"
+  default_prompt: "用 $arc-black-xhs 将这份内容排成统一的黑底白线小红书图文，按内容分页并导出图片。"
