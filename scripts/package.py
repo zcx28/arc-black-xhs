@@ -37,7 +37,7 @@ def main():
     root = args.project.expanduser().resolve()
     exports = args.exports.expanduser().resolve() if args.exports else root / 'exports'
     manifest = json.loads((exports / 'manifest.json').read_text())
-    if manifest.get('generator') not in ('arc-black-xhs', 'zcx-black-xhs', 'together-xiaohongshu'):
+    if manifest.get('generator') not in ('arc-black-xhs-general', 'arc-black-xhs', 'zcx-black-xhs', 'together-xiaohongshu'):
         parser.error('Use exports created by render.cjs.')
     report = json.loads((root / 'review/render-check.json').read_text())
     if report.get('status') != 'passed' or report.get('timestamp') != manifest.get('renderedAt') or Path(report.get('output', '')).resolve() != exports:

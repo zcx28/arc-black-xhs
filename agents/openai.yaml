@@ -1,4 +1,4 @@
 interface:
-  display_name: "arc-black-xhs"
-  short_description: "黑底白线、蓝绿强调的 HTML 图文排版，含固定品牌资产与高清导出"
-  default_prompt: "用 $arc-black-xhs 将这份内容排成统一的黑底白线小红书图文，按内容分页并导出图片。"
+  display_name: "arc-black-xhs-general"
+  short_description: "黑底白线图文：插画与英文主题字形均用生图模型创作，默认无品牌，含镂空与高清导出"
+  default_prompt: "用 $arc-black-xhs-general 制作这篇文章的黑底白线图文：用生图模型创作文章插画及英文主题字形，再从生成字形派生实心和镂空；默认无品牌，导出可编辑 HTML 与两种尺寸图片。"

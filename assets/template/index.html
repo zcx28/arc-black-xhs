@@ -4,96 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <title>Together · 排版起点</title>
+  <title>黑底图文 · 排版起点</title>
   <link rel="stylesheet" href="styles.css">
   <script>if(new URLSearchParams(location.search).has('render'))document.documentElement.classList.add('render-mode');</script>
   <script src="viewer.js" defer></script>
 </head>
 <body>
   <header class="viewer-header">
-    <h1 class="viewer-title">Together <small><span data-page-count></span> 页 · 排版示例</small></h1>
+    <h1 class="viewer-title">黑底图文<small><span data-page-count></span> 页 · 待替换的排版起点</small></h1>
     <nav class="viewer-actions" aria-label="预览与下载">
       <button id="view-toggle" type="button" aria-pressed="false">逐页看</button>
       <button id="backdrop-toggle" type="button" aria-pressed="true">隐藏背景字</button>
     </nav>
   </header>
-  <main class="gallery" aria-label="Together 图文">
-    <figure class="sheet">
-      <div class="artboard-wrap">
-        <article class="page cover" data-slug="cover" data-title="把问题带上桌" data-topic="OPEN QUESTIONS">
-          <header class="page-header"></header>
-          <h2 class="cover-kicker" lang="en">OPEN</h2>
-          <p class="cover-chinese">没有<br>标准答案</p>
-          <p class="cover-display" lang="en">QUESTIONS.</p>
-          <div class="cover-intro">
-            <h2>聊聊正在发生的<br>尝试。</h2>
-            <p>把正在做的事情摆出来。<br>聊进展，也聊卡住的地方。<br>让真实的经历，成为对话的起点。</p>
+  <main class="gallery" aria-label="文章图文">
+    <!-- 下面是布局骨架；制作时替换文案，按文章增删页面和新生成的资产。 -->
+    <figure class="sheet"><div class="artboard-wrap">
+      <article class="page cover" data-slug="cover" data-title="文章封面" data-topic="">
+        <header class="page-header"></header>
+        <h2 class="cover-title">文章的标题，<br><span class="cyan">从这里开始。</span></h2>
+        <p class="cover-summary">放入本篇的核心主张或引入，<br>插画与英文主题字形都需按文章调用生图模型创作。</p>
+        <footer class="page-footer"></footer>
+      </article>
+    </div><figcaption></figcaption></figure>
+    <figure class="sheet"><div class="artboard-wrap">
+      <article class="page editorial" data-slug="main-idea" data-title="本页的主线" data-topic="">
+        <header class="page-header"></header>
+        <div class="content">
+          <h2>这一页，<br><span class="cyan">只讲一件事。</span></h2>
+          <div class="prose">
+            <p>替换成本篇文章中的背景、经历、论据或转折。</p>
+            <p>根据内容选择图文、叙事、对照或清单。<br>需要插画的页面，再放入为本篇生成的资产。</p>
           </div>
-          <img class="cover-scene" src="assets/roundtable.png" width="1920" height="1080" alt="四个人围坐圆桌交流的白线插画">
-          <img class="cover-wordmark" src="assets/together-cyan.png" width="1705" height="774" alt="Together">
-          <footer class="page-footer"></footer>
-        </article>
-      </div>
-      <figcaption></figcaption>
-    </figure>
-    <figure class="sheet">
-      <div class="artboard-wrap">
-        <article class="page editorial" data-slug="conversation" data-title="先把问题说具体" data-topic="START WITH THE REAL QUESTION.">
-          <header class="page-header"></header>
-          <div class="content">
-            <h2>先把问题，<br><span class="cyan">说具体。</span></h2>
-            <div class="lead-grid">
-              <div class="prose">
-                <p>交流不必从一份完整的答案开始。</p>
-                <p>一个正在尝试的想法，一次尚未验证的判断，都可以成为话题。</p>
-                <p>正在做什么？卡在哪里？<br>下一步准备怎么试？</p>
-              </div>
-              <img class="lead-art" src="assets/cost-discussion.png" width="1280" height="1280" alt="空圆桌、蓝色椅子和白板组成的讨论空间">
-            </div>
-            <div class="flow"><span>正在做什么</span><span>遇到了什么</span><span>下一步怎么试</span></div>
-            <p class="prose">把背景补充清楚，让彼此听懂问题。<br>再从不同的经验里，寻找值得继续尝试的方向。</p>
-            <p class="takeaway">把经历说清楚，<br>比把结论说漂亮<span class="cyan">更有用。</span></p>
-          </div>
-          <footer class="page-footer"></footer>
-        </article>
-      </div>
-      <figcaption></figcaption>
-    </figure>
-    <figure class="sheet">
-      <div class="artboard-wrap">
-        <article class="page agenda" data-slug="questions" data-title="不同的视角" data-topic="DIFFERENT PERSPECTIVES.">
-          <header class="page-header"></header>
-          <div class="content">
-            <h2>一张桌，<br><span class="cyan">不同的视角。</span></h2>
-            <p class="agenda-intro">先提出问题，再交换经验。</p>
-            <div class="questions">
-              <section class="question-row"><span class="question-num">01</span><div><h3>我们在为谁解决问题？</h3><p>从具体的人和使用场景开始，而不是只谈功能。</p></div></section>
-              <section class="question-row"><span class="question-num">02</span><div><h3>下一步，怎样小一点？</h3><p>把庞大的想法，变成一次可以着手的尝试。</p></div></section>
-              <section class="question-row"><span class="question-num">03</span><div><h3>做完之后，留下了什么？</h3><p>除了结果，也记录判断、变化和没有想通的地方。</p></div></section>
-            </div>
-            <p class="agenda-close">问题没有标准答案，<br>但值得认真讨论。</p>
-          </div>
-          <footer class="page-footer"></footer>
-        </article>
-      </div>
-      <figcaption></figcaption>
-    </figure>
-    <figure class="sheet">
-      <div class="artboard-wrap">
-        <article class="page closing" data-slug="next-round" data-title="下次来坐坐" data-topic="STAY CURIOUS. BUILD TOGETHER.">
-          <header class="page-header"></header>
-          <h2 class="closing-title" lang="en">NEXT<span class="last">ROUND.</span></h2>
-          <p class="closing-chinese">下次，<span class="cyan">来坐坐。</span></p>
-          <p class="closing-copy">带上一个正在做的尝试，<br>或一个还没想通的问题。<br>我们从这里聊起。</p>
-          <img class="closing-art" src="assets/next-round.png" width="1280" height="1280" alt="留着一把蓝色椅子的空圆桌">
-          <img class="closing-wordmark" src="assets/together-cyan.png" width="1705" height="774" alt="Together">
-          <span class="seat-cue" lang="en">YOU</span>
-          <p class="closing-invite">下一次，你想聊什么？<br><strong>把你的问题留在评论区。</strong></p>
-          <footer class="page-footer"></footer>
-        </article>
-      </div>
-      <figcaption></figcaption>
-    </figure>
+          <p class="takeaway">把本页最重要的判断，<br><span class="cyan">留在这里。</span></p>
+        </div>
+        <footer class="page-footer"></footer>
+      </article>
+    </div><figcaption></figcaption></figure>
+    <figure class="sheet"><div class="artboard-wrap">
+      <article class="page closing" data-slug="closing" data-title="文章结尾" data-topic="">
+        <header class="page-header"></header>
+        <h2 class="closing-title">留下原文的<br><span class="cyan">行动或余韵。</span></h2>
+        <p class="closing-copy">结尾可以有本篇的插画或英文主题词，<br>由内容决定，不固定场景和字标。</p>
+        <p class="closing-invite">放入文章真正想留给读者的那句话。</p>
+        <footer class="page-footer"></footer>
+      </article>
+    </div><figcaption></figcaption></figure>
   </main>
 </body>
 </html>

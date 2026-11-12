@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the editable Together starter into an empty output directory."""
+"""Copy the neutral black editorial starter into an empty output directory."""
 import argparse
 from pathlib import Path
 import shutil
@@ -17,7 +17,8 @@ def main():
         parser.error(f"Output must be new or empty: {target}")
     shutil.copytree(skill / "assets/template", target, dirs_exist_ok=True)
     print(f"Starter copied to {target}")
-    print("Replace the example copy and page selection with the current source content.")
+    print("Replace the example copy; use an image model for article illustrations and any English theme lettering.")
+    print("No brands, old illustrations or fixed wordmarks are included.")
     print(f"Preview: {target / 'index.html'}")
 
 

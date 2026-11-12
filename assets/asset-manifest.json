@@ -1,16 +1,6 @@
 {
-  "origin": "User-approved Together visual assets and roundtable carousel, 2026-11-08",
+  "origin": "Neutral black editorial starter; only fonts are included in new projects.",
   "files": [
-    {
-      "file": "ai-market.png",
-      "role": "illustration",
-      "sha256": "67bc2a6d58dce821d17ac359e67274c1ba5ba24e4eb7437979520878b6c234b8"
-    },
-    {
-      "file": "cost-discussion.png",
-      "role": "illustration",
-      "sha256": "05c6a443d91486cf5693490974d6b1e33e09304e47d5658badb7c0b027817307"
-    },
     {
       "file": "fonts/MiSans-Regular.woff2",
       "role": "font",
@@ -20,56 +10,6 @@
       "file": "fonts/MiSans-Semibold.woff2",
       "role": "font",
       "sha256": "db6c6d019677956ddeaab8d4695ba1800b70228b88bdf7ecb168fc6a4f8d43ce"
-    },
-    {
-      "file": "growth-discussion.png",
-      "role": "illustration",
-      "sha256": "f1580e7954e67ec7b94c7df33f9f89ff279c7dd1521d483a85a0b3b4ebc5ff9a"
-    },
-    {
-      "file": "next-round.png",
-      "role": "illustration",
-      "sha256": "f24e30326a5f8ee5814f923c9b9bffe531b00c0e50f707bc9f60c94be7674278"
-    },
-    {
-      "file": "process-discussion.png",
-      "role": "illustration",
-      "sha256": "64a1bdead3f928d1494f18d532ecd4bdab9399fa4d8153821c4757fde6cf503a"
-    },
-    {
-      "file": "rift-white.png",
-      "role": "brand",
-      "sha256": "dc93f18c664d52ba2ca7544f714cb30174d200ae5f5ba0708f155f6efb0e9d0e"
-    },
-    {
-      "file": "roundtable.png",
-      "role": "illustration",
-      "sha256": "ba1a982d38f455a9d2fdbb1cb68d0e89176abd9c937003ecf1610d17b7f1c342"
-    },
-    {
-      "file": "tinuehub-white.png",
-      "role": "brand",
-      "sha256": "f11628775ef2f04bbcee7f19bd50bf662def2ad336163d7babf6dacc71767206"
-    },
-    {
-      "file": "together-cyan.png",
-      "role": "wordmark",
-      "sha256": "d7f8c267cca073642b2cb2031a5f8d936245edb4cf114cb6a798a8ab488d8176"
-    },
-    {
-      "file": "together-outline.svg",
-      "role": "wordmark",
-      "sha256": "e0fa4974d825594ca1739737eef55eca700d944cf67dd75b4526c1993c399ea1"
-    },
-    {
-      "file": "together-white.png",
-      "role": "wordmark",
-      "sha256": "e54ed87dbf0732919f567dcf8d6cf90bcc8870bc0a9ee7c1c97a7842d7226410"
-    },
-    {
-      "file": "together-white.svg",
-      "role": "wordmark",
-      "sha256": "0862c8473eae365287079a25d3b441545fae4eb78ff99498b5c2fdc5bc43f74f"
     }
   ]
 }

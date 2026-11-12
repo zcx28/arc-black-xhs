@@ -1,20 +1,18 @@
 # 内容与版式
 
-复用模板里的容器，按输入自由组合。每页约一条主线；标题说明论点或问题，段落提供背景，原话保留说话者，结论不把有分歧的讨论包装成公认事实。
+按文章选择叙事、图文、对照、清单或引语，不把案例的活动结构当通用模板。一页一条主线；留白不够时拆页，不不断缩小正文。
 
 ## 页面容器
-
-复制一整个 `.sheet`，修改属性和正文。`viewer.js` 自动计算页码、总数和进度；无需手写数字。不同页面可复用一个构图，但不要把变化只做成不同的标题。
 
 ```html
 <figure class="sheet">
   <div class="artboard-wrap">
     <article class="page editorial" data-slug="main-idea"
-      data-title="这一页的中文标题" data-topic="A SHORT ENGLISH LINE.">
+      data-title="本页中文标题" data-topic="A SHORT TOPIC.">
       <header class="page-header"></header>
       <div class="content">
-        <h2>中文标题，<br><span class="cyan">关键部分。</span></h2>
-        <!-- 使用下方适合内容的模块 -->
+        <h2>本页主张，<br><span class="cyan">关键部分。</span></h2>
+        <!-- 按文章添加正文和本篇生成的插画。 -->
       </div>
       <footer class="page-footer"></footer>
     </article>
@@ -23,67 +21,58 @@
 </figure>
 ```
 
+`viewer.js` 自动计算页码和进度。默认页头只有页码，不需要品牌节点。
+
 ## 图文与结论
 
 ```html
 <div class="lead-grid">
   <div class="prose">
-    <p>从原稿整理出的背景与事实。</p>
-    <p>继续交代关键转折，不把整篇塞进一个段落。</p>
+    <p>从本篇整理出的背景。</p>
+    <p>这一页的具体经历、论据或转折。</p>
   </div>
-  <img class="lead-art" src="assets/cost-discussion.png"
-    width="1280" height="1280" alt="空圆桌与白板">
+  <img class="lead-art" src="assets/article-scene.png"
+       alt="本篇新生成的画面内容">
 </div>
 <p class="takeaway">这一页的核心判断，<br><span class="cyan">留在这里。</span></p>
 ```
 
-`.takeaway` 的自动上留白让结论对齐底部。内容不够时保留空白；内容过多时增页，不把正文和结论顶到一起。引用的图片应与实际论点相关，也可以没有图片。
+`article-scene.png` 指已经为本篇生成并保存的实际文件，不是模板自带素材。按真实图片比例设置尺寸。无需插画的页面直接使用段落、留白与细线。
 
-## 观点对照
+## 对照与引语
 
-仅当输入确有原话时使用引语，不把下面的结构说明当作真实发言。`page dialogue` 为观点对照提供细线。
+`.exchange`、`.exchange-row` 提供 115px / 剩余宽度的说话者双栏；`.quote` 为原话字号。只有输入中确有原话时才用引语，不把改述加引号，不误配说话者。
 
 ```html
 <div class="exchange">
   <div class="exchange-row">
-    <span class="speaker">说话者</span>
-    <blockquote class="quote">来源中完整保留的原话。</blockquote>
-  </div>
-  <div class="exchange-row">
-    <span class="speaker">另一位说话者</span>
-    <blockquote class="quote">另一段可核对的原话。</blockquote>
+    <span class="speaker">原文说话者</span>
+    <blockquote class="quote">原文完整引语。</blockquote>
   </div>
 </div>
 ```
 
-对照之间可加简短过渡，但不要误配名字、把编辑改写放进引号或把多人的观点拼成一段引语。长引语可以占整页，减少插画面积。
+不需要说话者的观点比较，可自行使用两列与细分隔线，避免虚构“原话”。
 
-## 问题索引
+## 清单与步骤
 
-`page agenda`、`.questions`、`.question-row` 适合讨论提纲或三四个并列要点。每行一个编号、一句主问题、可选一行补充。数量由内容决定；别为了结构齐整虚构问题。
-
-## 人物介绍（输入有身份材料时）
-
-`page team` 有无卡片的两列成员布局：`.team-title`、`.people-grid`、`.person`。两列间距 72px，行距 56px，头像 180px、账号 46px、领域 27px。
+`.questions`、`.question-row` 适合并列要点，数量跟随文章；不固定三条或四条。
 
 ```html
-<div class="people-grid">
-  <section class="person">
-    <div class="person-top">
-      <img class="person-avatar" src="assets/provided-avatar.png"
-        width="180" height="180" alt="用户提供的成员头像">
-      <span class="person-index">01</span>
-    </div>
-    <h3>@用户提供的名字</h3>
-    <p class="person-tags">领域一 / 领域二</p>
+<div class="questions">
+  <section class="question-row">
+    <span class="question-num">01</span>
+    <div><h3>本篇要点</h3><p>解释、依据或行动。</p></div>
   </section>
 </div>
 ```
 
-保留提供的头像身份，做圆形裁切即可。长标签允许换行，必要时覆盖 `.person-tags { white-space:normal }`；不缩窄字体。人数较多可拆页，不固定四人，也不默认加入上一期的成员。
+## 人物介绍
 
-## 自定义品牌
+仅在本篇有身份材料时用 `.people-grid` 与 `.person`，保留用户提供的头像与身份，不生成不实身份。长标签允许换行，人数多时拆页。
 
-默认无需配置。替换时可在 `<body>` 设置 `data-logo-one`、`data-logo-two`、`data-name-one`、`data-name-two`、`data-backdrop`。只有一个品牌时直接调整 `viewer.js` 的品牌插入部分。Together 实心图与背景轮廓要同时检查，避免旧品牌残留；保留原始图形比例。
+## 可选品牌与主题装饰
 
-仅个别页不需要背景字时，可设置 `data-backdrop="off"`。默认正文页保持半透明镂空字；封尾通过自身构图使用实心字标。
+默认不配置品牌或背景图。用户指定品牌后才在 `body` 配置 `data-logo-one`、`data-logo-two` 和对应的 `data-name-one`、`data-name-two`，单 Logo 无乘号，双 Logo 才出现联名分隔符。
+
+本篇英文短词的制作见 [wordmarks.md](wordmarks.md)。设置 `data-theme-word="WRITE"` 与 `data-backdrop="assets/theme-outline.svg"` 后，有正文的页面才自动加入背景；单页 `data-backdrop="off"` 可关闭。封尾实心主题词使用 `.theme-mark` 图像显式插入，位置随字形调整。

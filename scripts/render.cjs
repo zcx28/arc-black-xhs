@@ -51,13 +51,16 @@ async function preflight(page) {
         problems.push(`MiSans ${weight} did not load`);
       }
     }
+    for (const el of document.querySelectorAll('[data-theme-word]')) {
+      if (el.dataset.themeWord && !/^[A-Za-z]+$/.test(el.dataset.themeWord)) problems.push('Theme decoration must be a single English word using letters only');
+    }
     const pages = [...document.querySelectorAll('.page')].map((el, index) => {
       const label = `Page ${index + 1}`;
       const box = el.getBoundingClientRect();
       if (Math.abs(box.width - 1080) > .5 || Math.abs(box.height - 1440) > .5) problems.push(`${label}: artboard must be 1080 × 1440`);
       const slug = el.dataset.slug || `page-${String(index + 1).padStart(2, '0')}`;
       if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) problems.push(`${label}: use a lowercase ASCII data-slug`);
-      if (!el.querySelector('.page-header .brands') || !el.querySelector('.page-footer .progress')) problems.push(`${label}: viewer.js did not populate header/footer`);
+      if (!el.querySelector('.page-header .folio') || !el.querySelector('.page-footer .progress')) problems.push(`${label}: viewer.js did not populate header/footer`);
       const content = el.querySelector('.content');
       if (content) {
         const area = content.getBoundingClientRect();
@@ -92,7 +95,7 @@ async function preflight(page) {
         return {src: img.getAttribute('src'), naturalWidth: img.naturalWidth, naturalHeight: img.naturalHeight};
       });
       const copy = el.cloneNode(true);
-      copy.querySelectorAll('.page-header,.page-footer,.together-backdrop').forEach(node => node.remove());
+      copy.querySelectorAll('.page-header,.page-footer,.theme-backdrop,.together-backdrop,[data-decorative="true"]').forEach(node => node.remove());
       return {index: index + 1, slug, title: el.dataset.title || '', topic: el.dataset.topic || '', text: copy.textContent.replace(/\s+/g, ' ').trim(), images};
     });
     if (!pages.length) problems.push('No .page elements found');
@@ -135,12 +138,12 @@ async function main() {
   const oldEntries = await fs.readdir(output).catch(err => err.code === 'ENOENT' ? [] : Promise.reject(err));
   if (oldEntries.length) {
     const old = await fs.readFile(path.join(output, 'manifest.json'), 'utf8').then(JSON.parse).catch(() => null);
-    if (!['arc-black-xhs', 'zcx-black-xhs', 'together-xiaohongshu'].includes(old?.generator)) throw new Error('Export directory contains unrecognized files; choose a new --out directory.');
+    if (!['arc-black-xhs-general', 'arc-black-xhs', 'zcx-black-xhs', 'together-xiaohongshu'].includes(old?.generator)) throw new Error('Export directory contains unrecognized files; choose a new --out directory.');
   }
   const reviewDir = path.join(root, 'review');
   await fs.mkdir(reviewDir, {recursive: true});
   await fs.mkdir(path.dirname(output), {recursive: true});
-  const stage = await fs.mkdtemp(path.join(path.dirname(output), '.together-render-'));
+  const stage = await fs.mkdtemp(path.join(path.dirname(output), '.arc-black-render-'));
   let browser;
   let report = {status: 'running', source: input, output, timestamp: new Date().toISOString()};
   const saveReport = () => fs.writeFile(path.join(reviewDir, 'render-check.json'), JSON.stringify(report, null, 2) + '\n');
@@ -202,7 +205,7 @@ async function main() {
     await ready(sheet);
     await sheet.screenshot({path: path.join(stage, 'contact-sheet.png'), fullPage: true});
     if (JSON.stringify(sources) !== JSON.stringify(await sourceFiles(root, input))) throw new Error('Source changed during rendering; rerun after finishing edits.');
-    const manifest = {generator: 'arc-black-xhs', version: 1, renderedAt: report.timestamp, sources, title: await preview.title(), pageCount: proof.pages.length, artboard: {width: 1080, height: 1440}, variants: [{folder: '1080', width: 1080, height: 1440}, {folder: '2160', width: 2160, height: 2880}], pages: proof.pages.map(({index, slug, title, topic, filename}) => ({index, slug, title, topic, filename}))};
+    const manifest = {generator: 'arc-black-xhs-general', version: 1, renderedAt: report.timestamp, sources, title: await preview.title(), pageCount: proof.pages.length, artboard: {width: 1080, height: 1440}, variants: [{folder: '1080', width: 1080, height: 1440}, {folder: '2160', width: 2160, height: 2880}], pages: proof.pages.map(({index, slug, title, topic, filename}) => ({index, slug, title, topic, filename}))};
     await fs.writeFile(path.join(stage, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
     const backup = output + `.previous-${Date.now()}`;
     let backedUp = false;
